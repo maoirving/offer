@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offer君 | 职位搜索</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- 引入初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入公共样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 引入search_list.css -->
+    <link rel="stylesheet" href="css/search_list.css">
+    <!-- 引入jQuery.min的js文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入弹出特效-->
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <!-- 引入自制输入框 -->
+    <script src="layui/popup/popup.js"></script>
+    <!-- 引入返回顶部  -->
+    <script src="js/GoToTop.js"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入search_list.js 文件 -->
+    <script src="js/search_list.js"></script>
+</head>
+
+<body>
+<!-- 引入快捷导航模块 -->
+<?php require "shortcut.html"; ?>
+<!-- header头部模块制作 start -->
+<!-- 职位搜索模块 start -->
+<div class="mw">
+    <!-- 搜索区域 -->
+    <div class="search">
+        <div class="job_search">
+            <!-- 搜索框 -->
+            <div class="big_search clearfix">
+                <div class="word_search">
+                    <input type="search" name="" id="search_content" placeholder="搜索职位">
+                </div>
+                <button id="searchJob">搜索</button>
+            </div>
+            <!-- 条件筛选 -->
+            <div class="condition" id="condition_app">
+                <div class="dropdown_wrap" @mouseleave="noshow" v-for="(item, index) in dropdown_select"
+                     :key="index" v-cloak>
+                    <div class="dropdown_select" @mouseover="show(index)">
+                        <input type="text" :value="item.select" class="ipt" disabled="disabled">
+                        <span class="icomoon"></span>
+                    </div>
+                    <div class="dropdown_menu" v-show="currentIndex==index">
+                        <ul class="m_ul">
+                            <li class="selected_option" v-for="(val, i) in item.select_more" :key="i"
+                                @click="selected(index,i)">
+                                {{val}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 简历模块制作 start -->
+        <div class="resume">
+            <div class="resume_h">
+                我的简历
+            </div>
+            <div class="resume_bd">
+                <button class="my_btn" id="uploadResume">上传简历</button>
+                <button class="my_btn" id="lookResume">查看简历</button>
+            </div>
+        </div>
+    </div>
+    <!-- 简历模块制作 end -->
+
+</div>
+<!-- 职位搜索模块 end -->
+<!-- 主要模块制作 start -->
+<div class="mw">
+    <div class="main clearfix">
+        <!--未找到职位-->
+        <div class="job_notFound">
+            <div class="tip">
+                <img src="images/tip-errordata.png" alt="">
+                <p>没找到相关职位，换一个试试！</p>
+            </div>
+        </div>
+        <!-- 职位列表模块 start -->
+        <div class="job_list" id="job_app">
+            <ul>
+                <li class="mli" v-for="(item, index) in job" :key="index" @click="skip(item.job_id)" v-cloak
+                    v-show="isShow(item)">
+                    <div class="primary">
+                        <div class="job_title">
+                                <span class="job_name">
+                                    {{item.name}}
+                                </span>
+                            <span class="job_area">[{{item.area | city}}]</span>
+                            <span class="pub_time">
+                                    发布于{{item.pub_time | formatCN('MDhm')}}
+                            </span>
+                        </div>
+                        <div class="job_limit">
+                            <span class="salary">{{item.salary}}</span>
+                            <p>
+                                <span>{{item.require}}</span>
+                                <span class="vline"></span>
+                                <span>{{item.education}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m_line"></div>
+                    <div class="company_info">
+                        <div class="company_title">
+                                <span class="company_name">
+                                    {{item.company_name}}
+                                </span>
+                        </div>
+                        <div class="company_main">
+                            <p>
+                                <span>{{item.company_type}}</span>
+                                <span class="vline"></span>
+                                <span>{{item.company_finance}}</span>
+                                <span class="vline"></span>
+                                <span>{{item.company_headcount}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 职位列表模块 end -->
+        <!-- 我的申请模块 start -->
+        <div class="apply_list" id="apply_app">
+            <!-- 未登录状态 -->
+            <div class="list_h">
+                <span>&nbsp;已申请的职位</span>
+                <a href="javascript:;" @click="lookMore">查看更多</a>
+            </div>
+            <div class="no_signed">
+                <h4>您暂未登录，请先去<a href="sign.html">登录</a>噢~</h4>
+                <a href="sign.html"><img src="images/no_signed.png" title="去登录" alt="您暂未登录"></a>
+            </div>
+            <div class="list_b">
+                <ul>
+                    <li v-for="(item,index) in job" :key="index" v-cloak>
+                        <a href="javascript:;" class="job_info" @click.prevent="skip(item.job_id,item.isRead)">
+                            <div class="job_top">
+                                <span class="job_name">{{item.name}}</span>
+                                <span class="job_salary">{{item.salary}}</span>
+                            </div>
+                            <p class="job_text">
+                                <span>{{item.area | formatCity}}</span>
+                                <span>|</span>
+                                <span>{{item.require}}</span>
+                                <span>|</span>
+                                <span>{{item.education}}</span>
+                            </p>
+                            <div class="job_bottom">
+                                {{item.company_name}}
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 我的申请模块 end -->
+    </div>
+
+</div>
+<!-- 主要模块制作 end -->
+<!-- 页数模块 start -->
+<!--<div class="mw">-->
+<!--    <div class="page_num">-->
+<!--        <ul>-->
+<!--            <li class="icomoon"></li>-->
+<!--            <li class="current">1</li>-->
+<!--            <li>2</li>-->
+<!--            <li>3</li>-->
+<!--            <li>...</li>-->
+<!--            <li class="icomoon"></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- 页数模块 end -->
+<!-- 上传简历模态框 -->
+<div class="popup_box" id="upResume_popup">
+    <div class="popup">
+        <div class="popup_title">
+            <div class="title_move"></div>
+            <div class="title_div">简历上传</div>
+            <button class="closeBtn">关闭</button>
+        </div>
+        <div class="popup_content">
+            <p>点击上传您的简历！</p>
+            <form action="" id="upResume_form">
+                <input type="file" name="file" class="item_input">
+            </form>
+        </div>
+        <div class="popupBtn">
+            <button class="popup_btn cancel_btn">取消</button>
+            <button class="popup_btn ok_btn">确认上传</button>
+        </div>
+    </div>
+    <!-- 遮盖层 -->
+    <div class="mask_box" class="mask_box"></div>
+</div>
+<!-- 返回顶部模块 start  -->
+<div class="goTop" id="js-go_top">
+    
+</div>
+<!-- 返回顶部模块 end  -->
+<!-- 引入底部模块 -->
+<?php require "footer.html"; ?>
+</body>
+
+</html>

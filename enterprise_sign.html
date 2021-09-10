@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offer君 - 企业登录</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/enterprise_sign.css">
+    <!-- 引入 jQuery 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入 sign.js 文件 -->
+    <script src="js/enterprise_sign.js"></script>
+
+</head>
+
+<body>
+<div class="header">
+    <div class="mw">
+        <div class="logo">
+            <a href="index.html"> <img src="images/logo.png" alt=""></a>
+            <span class="my_name">企业版</span>
+        </div>
+        <div class="login">我没有账号，立即去<a href="register.html" class="style_color">注册</a></div>
+        <div class="find_job"><a href="sign.html">进入求职版</a></div>
+    </div>
+</div>
+<div class="container">
+    <div class="main">
+        <div class="main_h">
+            立即登录，抢先一步定人才
+        </div>
+        <div class="sign">
+            <form action="enterprise.html" method="post">
+                <ul>
+                    <li><input type="text" class="inp" id="username" name="username" placeholder="请输入账号"
+                               autocomplete="off" maxlength="16">
+                        <p class="username_result"></p>
+                    </li>
+                    <li><input type="password" class="inp" id="password" name="password" placeholder="请输入密码"
+                               maxlength="16">
+                        <span class="eyes"></span>
+                        <p class="password_result"></p></li>
+                    <li><input type="text" class="inp ma" id="identifying" placeholder="请输入验证码" autocomplete="off"
+                               maxlength="4">
+                        <p class="identifying_result"></p>
+                    </li>
+                    <li><img src="upload/ma1.jpg" alt="" class="ma_img"><a href="javascript:;"
+                                                                           class="change_ma">看不清，换一张</a>
+                    </li>
+                    <li>
+                        <input type="button" value="立即登录" class="btn">
+                    </li>
+                    <li>
+                        <p>还没有账号？<a href="register.html">免费注册</a></p>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 引入底部模块 -->
+<?php require "footer.html"; ?>
+</body>
+
+</html>

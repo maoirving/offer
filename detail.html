@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offer君 | 职位详情</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- 引入初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入公共样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="css/detail.css">
+    <!-- 引入 jQuery 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入弹出特效-->
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <!-- 引入自制输入框 -->
+    <script src="layui/popup/popup.js"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入 detail.js 文件 -->
+    <script src="js/detail.js"></script>
+
+</head>
+
+<body>
+<!-- 引入快捷导航模块 -->
+<?php require "shortcut.html"; ?>
+<!-- header头部模块制作 start -->
+<!-- main 模块制作 start -->
+<div class="mw">
+    <div class="main clearfix" id="app" v-cloak>
+        <!-- 职位详情模块 start -->
+        <div class="detail_content">
+            <div class="content_top">
+                职位详情
+            </div>
+            <div class="content_body">
+                <div class="job_hd">
+                    <span class="job_name">{{job.name}}</span>
+                    <span class="job_salary">{{job.salary}}</span>
+                    <p class="job_req">
+                        <span>{{job.area | city}}</span>
+                        <span>|</span>
+                        <span>{{job.require}}</span>
+                        <span>|</span>
+                        <span>{{job.education}}</span>
+                    </p>
+                </div>
+                <div class="job_bd">
+                    <h3>岗位职责</h3>
+                    <div class="job_text">
+                        <p v-html="job.job_description"></p>
+                    </div>
+                    <h3>任职要求</h3>
+                    <div class="job_text">
+                        <p v-html="job.job_skill"></p>
+                    </div>
+                    <h3>招聘人数</h3>
+                    <div class="job_text">
+                        <p>{{job.wanted_num}}人</p>
+                    </div>
+                    <h3>工作地址</h3>
+                    <div class="job_text">
+                        <p>{{job.area}}</p>
+                    </div>
+                    <h3>发布者</h3>
+                    <div class="job_text">
+                        <p>
+                            <span>姓名：{{job.recruiter_name}}</span>
+                            <span>手机：{{job.recruiter_phone}}</span>
+                            <span>邮箱：{{job.recruiter_email}}</span>
+                        </p>
+                    </div>
+                    <h3>公司介绍</h3>
+                    <div class="job_text">
+                        <p v-html="job.introduction"></p>
+                    </div>
+                    <h3>公司地址</h3>
+                    <div class="job_text">
+                        <p>{{job.address}}</p>
+                    </div>
+                </div>
+                <div class="job_apply">
+                    <button class="detail_btn"
+                            @click="loveJob(job.name,job.require,job.salary,job.area,job.education,job.company_id)">
+                        收藏职位
+                    </button>
+                    <button class="detail_btn"
+                            @click="applyJob(job.name,job.require,job.salary,job.area,job.education,job.company_id)">
+                        申请职位
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 职位详情模块 end -->
+        <!-- 公司信息模块 start -->
+        <div class="company_detail">
+            <div class="company_hd">
+                <img :src="job.company_imgUrl" alt="">
+                <h5>{{job.company_name}}</h5>
+            </div>
+            <div class="company_bd">
+                <h3>融资情况</h3>
+                <p>{{job.company_finance}}</p>
+                <h3>公司人数</h3>
+                <p>{{job.company_headcount}}</p>
+                <h3>行业类别</h3>
+                <p>{{job.company_type}}</p>
+                <h3>法人代表</h3>
+                <p>{{job.representative}}</p>
+                <h3>注册资金</h3>
+                <p>{{job.registered_capital}}</p>
+                <h3>注册时间</h3>
+                <p>{{job.registered_date}}</p>
+            </div>
+        </div>
+        <!-- 公司信息模块 end -->
+    </div>
+</div>
+<!-- main 模块制作 end -->
+<!--投递简历模态框-->
+<div class="popup_box" id="sendResume_popup">
+    <div class="popup">
+        <div class="popup_title">
+            <div class="title_move"></div>
+            <div class="title_div">投递简历</div>
+            <button class="closeBtn">关闭</button>
+        </div>
+        <div class="popup_content">
+            <p>点击选择您要投递的简历！</p>
+            <p>备注：附件简历为用户上传的简历</p>
+            <div class="choose_div">
+                <button class="choose_btn">附件简历</button>
+                <button class="choose_btn current_choose">在线简历</button>
+            </div>
+        </div>
+        <div class="popupBtn">
+            <button class="popup_btn cancel_btn">取消</button>
+            <button class="popup_btn ok_btn">确认投递</button>
+        </div>
+    </div>
+    <!-- 遮盖层 -->
+    <div class="mask_box" class="mask_box"></div>
+</div>
+<!-- 引入底部模块 -->
+<?php require "footer.html"; ?>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offer君 - 找工作神器！</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- 引入初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入公共样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <!-- 引入 jQuery 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入弹出特效-->
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <!-- 引入自制输入框 -->
+    <script src="layui/popup/popup.js"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入 轮播图的js文件 -->
+    <script src="js/swiper.min.js"></script>
+    <!-- 引入 index.js 文件 -->
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+<!-- 引入快捷导航模块 -->
+<?php require "shortcut.html"; ?>
+<!-- header头部模块制作 start -->
+<div class="header mw">
+    <!-- logo模块 -->
+    <div class="logo">
+        <h1>
+            <a href="index.html" title="offer君">offer君</a>
+        </h1>
+    </div>
+    <!-- search模块 -->
+    <br>
+    <div class="search">
+        <div class="mw"></div>
+        <input type="search" name="" id="keyword" placeholder="请输入要搜索的职位">
+        <button id="searchJob">搜索</button>
+    </div>
+</div>
+<!-- header头部模块制作 end -->
+<!-- 推荐模块制作 start -->
+<div class="mw">
+    <div class="recommend clearfix">
+        <!-- 最新职位模块 start -->
+        <div class="new_job" id="app">
+            <h3>
+                <!-- <span><img src="images/jp_icon.png" alt=""></span> -->
+                <span>最新职位</span>
+            </h3>
+            <div>
+                <ul>
+                    <li v-for="(item,index) in new_jobs" :key="index" v-cloak><a
+                            href="javascript:;"
+                            @click.prevent="skip(item.job_id)">{{item.name}}</a><span>{{item.salary}}</span></li>
+                    <li><a href="search_list.html">查看更多职位</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 最新职位模块 end -->
+        <!-- 轮播图模块 start -->
+        <div class="focus">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-item"><img src="./upload/focus/focus1.jpg" alt="banner"/></div>
+                    <div class="swiper-item"><img src="./upload/focus/focus2.jpg" alt="banner"/></div>
+                    <div class="swiper-item"><img src="./upload/focus/focus3.jpg" alt="banner"/></div>
+                    <div class="swiper-item"><img src="./upload/focus/focus4.jpg" alt="banner"/></div>
+                </div>
+            </div>
+        </div>
+        <!-- 轮播图模块 end -->
+        <!-- 新闻资讯模块 start -->
+        <div class="news" id="news_app">
+            <h4 class="news_hd">
+                <span>新闻资讯</span>
+            </h4>
+            <div class="news_bd">
+                <ul>
+                    <li v-for="(item,index) in news" :key="index" v-cloak><span>{{index+1}}</span><a
+                            href="javascript:;" @click.prevent="skip(item.news_id)">{{item.news_title}}</a>
+                    </li>
+                    <li><a href="news.html">查看更多&nbsp;</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 新闻资讯模块 end -->
+    </div>
+</div>
+<!-- 推荐模块制作 end -->
+<!-- 分割线 -->
+<div class="mw">
+    <div class="divider">
+        最新职位
+    </div>
+</div>
+<!-- recruitment 职位模块制作 start -->
+<div class="mw">
+    <div class="recruitment clearfix" id="job_app">
+        <!-- 校园招聘模块 start -->
+        <div class="campus">
+            <div class="campus_bh">
+                校园招聘
+                <a href="search_list.html?job_type=school">查看更多</a>
+            </div>
+            <div class="campus_bd">
+                <ul>
+                    <li v-for="(item, index) in campus_job" :key="index" v-cloak>
+                        <a href="javascript:;" class="job_info" @click.prevent="skip(item.job_id)">
+                            <div class="job_top">
+                                <span class="job_name">{{item.name}}</span>
+                                <span class="job_salary">{{item.salary}}</span>
+                            </div>
+                            <p class="job_text">
+                                <span>{{item.area | format}}</span>
+                                <span>|</span>
+                                <span>{{item.require}}</span>
+                                <span>|</span>
+                                <span>{{item.education}}</span>
+                            </p>
+                            <div class="job_bottom">
+                                {{item.company_name}}
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 校园招聘模块 end -->
+        <!-- 社会招聘模块 start -->
+        <div class="society">
+            <div class="society_bh">
+                社会招聘
+                <a href="search_list.html?job_type=society">查看更多</a>
+            </div>
+            <div class="society_bd">
+                <ul>
+                    <li v-for="(item, index) in society_job" :key="index" v-cloak>
+                        <a href="javascript:;" class="job_info" @click.prevent="skip(item.job_id)">
+                            <div class="job_top">
+                                <span class="job_name">{{item.name}}</span>
+                                <span class="job_salary">{{item.salary}}</span>
+                            </div>
+                            <p class="job_text">
+                                <span>{{item.area | format}}</span>
+                                <span>|</span>
+                                <span>{{item.require}}</span>
+                                <span>|</span>
+                                <span>{{item.education}}</span>
+                            </p>
+                            <div class="job_bottom">
+                                {{item.company_name}}
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 社会招聘模块 end -->
+    </div>
+</div>
+<!-- recruitment 职位模块制作 end -->
+<!-- 引入底部模块 -->
+<?php require "footer.html"; ?>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎注册 | offer君-找工作利器！</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/register.css">
+    <!-- 引入 jQuery 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入弹出特效-->
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入 register.js 文件 -->
+    <script src="js/register.js"></script>
+
+</head>
+
+<body>
+<div class="header">
+    <div class="mw">
+        <div class="logo">
+            <a href="index.html"> <img src="images/logo.png" alt=""></a>
+            <span class="my_name">君不见，offer岗位线上来！</span>
+        </div>
+        <div class="login">已有账号，直接去<a href="sign.html" class="style_color">登录</a></div>
+    </div>
+</div>
+<div class="container">
+    <div class="main">
+        <div class="main_h">
+            立即注册，寻找心仪的offer
+        </div>
+        <div class="register_slide">
+            <ul>
+                <li>
+                    <div class="present1">
+                        <h3>便捷的简历填写</h3>
+                        <p>一份简历开启未来</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="present2">
+                        <h3>海量的职位选择</h3>
+                        <p>360行任你挑选</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="present3">
+                        <h3>快速的职位投递</h3>
+                        <p>分秒必争直达HR</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="present4">
+                        <h3>高效的投递反馈</h3>
+                        <p>投递结果早知道</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="present5">
+                        <h3>最新的职场资讯</h3>
+                        <p>新鲜事，早知道</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="register">
+            <form action="sign.html" method="post">
+                <ul>
+                    <li><input type="text" class="inp" id="username" name="username" placeholder="请输入账号"
+                               autocomplete="off" maxlength="16">
+                        <p id="username_result"></p>
+                        <!-- value="<?php echo @$_SESSION['username'];?>" -->
+                    </li>
+
+                    <li><input type="password" class="inp" id="password" name="password" placeholder="请输入密码"
+                               maxlength="16">
+                        <span class="eyes"></span>
+                        <p id="password_result"></p>
+                    </li>
+                    <li><input type="password" class="inp" id="password_checked" name="password_checked"
+                               placeholder="请再次输入密码" maxlength="16">
+                        <p id="password_checked_result"></p>
+                    </li>
+                    <li class="choose">
+                        <span class="current" id="worker">我要找工作</span>
+                        <span id="recruiter">我要招聘</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" id="checkbox">
+                        <span>我已阅读并同意 <a href="sign.html">用户协议及隐私政策</a></span>
+                    </li>
+                    <li>
+                        <input type="button" value="立即注册" class="btn">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>客服热线： 400-620-5100 销售热线： 400-886-0051 027-87810888 Email： club@offer.com（个人） hr@offer.com（公司）</p>
+    <p>未经offer君同意，不得转载本网站之所有招聘信息及作品 | offer君工作网版权所有©2019-2020</p>
+</div>
+</body>
+
+</html>

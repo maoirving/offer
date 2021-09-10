@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d3d35240-5beb-4a26-a3b1-2a6241f82777" name="默认更改列表" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="offer" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iuHUDHtQGPrkRmBsXypuyyGYvh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Apache24/htdocs" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\server\Web\offer\php" />
+      <recent name="D:\server\Web\offer\php\common" />
+      <recent name="D:\server\Web\offer\php\admin" />
+      <recent name="D:\server\Web\offer\php\enterprise" />
+      <recent name="D:\server\Web\offer\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\server\Web\offer\php\common" />
+      <recent name="D:\server\Web\offer\php" />
+      <recent name="D:\server\Web\offer\php\admin" />
+      <recent name="D:\server\Web\offer\php\enterprise" />
+      <recent name="D:\server\Web\offer\upload" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="demo.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/offer/icomoon/demo.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.demo.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d3d35240-5beb-4a26-a3b1-2a6241f82777" name="默认更改列表" comment="" />
+      <created>1602750569595</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602750569595</updated>
+      <workItem from="1602750570948" duration="12134000" />
+      <workItem from="1602848649320" duration="679000" />
+      <workItem from="1602849385872" duration="600000" />
+      <workItem from="1604195452267" duration="899000" />
+      <workItem from="1604284036031" duration="1844000" />
+      <workItem from="1604888843204" duration="458000" />
+      <workItem from="1604995447778" duration="2440000" />
+      <workItem from="1604997916503" duration="593000" />
+      <workItem from="1604998807323" duration="19896000" />
+      <workItem from="1605059364051" duration="5265000" />
+      <workItem from="1605065016019" duration="4381000" />
+      <workItem from="1605096708074" duration="4660000" />
+      <workItem from="1605148295876" duration="1792000" />
+      <workItem from="1605240121508" duration="53000" />
+      <workItem from="1605260964221" duration="2190000" />
+      <workItem from="1605666035414" duration="100000" />
+      <workItem from="1605859429048" duration="143000" />
+      <workItem from="1605860983269" duration="830000" />
+      <workItem from="1605861970777" duration="13569000" />
+      <workItem from="1605926820838" duration="5710000" />
+      <workItem from="1605936311711" duration="11510000" />
+      <workItem from="1606036524383" duration="7767000" />
+      <workItem from="1606093766211" duration="11220000" />
+      <workItem from="1606185664833" duration="11695000" />
+      <workItem from="1606267716947" duration="24718000" />
+      <workItem from="1606318023299" duration="966000" />
+      <workItem from="1606356722743" duration="27425000" />
+      <workItem from="1606441054214" duration="21374000" />
+      <workItem from="1606527506318" duration="26956000" />
+      <workItem from="1606614006570" duration="3352000" />
+      <workItem from="1606649248840" duration="6231000" />
+      <workItem from="1606702214764" duration="11628000" />
+      <workItem from="1606787977329" duration="43455000" />
+      <workItem from="1606913784163" duration="9943000" />
+      <workItem from="1606955032856" duration="13867000" />
+      <workItem from="1606984526693" duration="2314000" />
+      <workItem from="1607240836496" duration="261000" />
+      <workItem from="1607241548893" duration="15153000" />
+      <workItem from="1607398088807" duration="96000" />
+      <workItem from="1607515091989" duration="12060000" />
+      <workItem from="1607558714639" duration="12751000" />
+      <workItem from="1607592535510" duration="18167000" />
+      <workItem from="1607652813011" duration="36575000" />
+      <workItem from="1607736722252" duration="26630000" />
+      <workItem from="1607831927068" duration="15174000" />
+      <workItem from="1607861527000" duration="11073000" />
+      <workItem from="1607910322833" duration="28747000" />
+      <workItem from="1607994508877" duration="32396000" />
+      <workItem from="1608045403238" duration="15000" />
+      <workItem from="1608045440791" duration="154000" />
+      <workItem from="1608046085391" duration="13000" />
+      <workItem from="1608089574863" duration="140000" />
+      <workItem from="1608109216914" duration="1606000" />
+      <workItem from="1608120290071" duration="78000" />
+      <workItem from="1608121788441" duration="638000" />
+      <workItem from="1608124829702" duration="60000" />
+      <workItem from="1608163395934" duration="2514000" />
+      <workItem from="1608172489543" duration="8812000" />
+      <workItem from="1608192726339" duration="12808000" />
+      <workItem from="1608260198136" duration="20453000" />
+      <workItem from="1608460824268" duration="15372000" />
+      <workItem from="1608515462461" duration="537000" />
+      <workItem from="1608516322998" duration="21681000" />
+      <workItem from="1608596076649" duration="36796000" />
+      <workItem from="1608686993737" duration="39978000" />
+      <workItem from="1608772562856" duration="27999000" />
+      <workItem from="1608880365403" duration="106000" />
+      <workItem from="1608880733539" duration="14659000" />
+      <workItem from="1608945610437" duration="641000" />
+      <workItem from="1608950188956" duration="4991000" />
+      <workItem from="1609026851015" duration="474000" />
+      <workItem from="1609227463245" duration="774000" />
+      <workItem from="1609673603965" duration="4451000" />
+      <workItem from="1612342760841" duration="29000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

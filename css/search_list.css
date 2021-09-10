@@ -1,0 +1,561 @@
+/* 职位搜索模块 */
+.search {
+    height: 162px;
+}
+
+.job_search {
+    float: left;
+    width: 795px;
+    height: 100%;
+    background-color: #fff;
+    padding-top: 30px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.big_search {
+    margin-left: 23px;
+}
+
+.word_search {
+    float: left;
+    /* width: 685px; */
+    width: 630px;
+    height: 48px;
+    border: 1px solid #009999;
+    border-right: none;
+    /* background-color: pink; */
+}
+
+
+.word_search input {
+    float: left;
+    width: 620px;
+    height: 46px;
+    font-size: 14px;
+    padding: 0 15px;
+    border-right: none;
+    /*background-color: yellow;*/
+}
+
+.big_search button {
+    float: left;
+    width: 120px;
+    height: 48px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #009999;
+}
+
+.big_search button:hover {
+    background-color: #0aa7a7;
+}
+
+.job_search .condition {
+    /*width: 795px;*/
+    height: 40px;
+    font-size: 12px;
+    margin: 30px 0px 15px 23px;
+}
+
+.job_search .condition .dropdown_wrap {
+    position: relative;
+    float: left;
+    width: 115px;
+    margin-right: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.job_search .condition .dropdown_wrap:last-child {
+    margin-right: 0;
+}
+
+.job_search .condition .dropdown_wrap .dropdown_select {
+    font-size: 12px;
+    padding: 6px;
+}
+
+.job_search .condition .dropdown_wrap .dropdown_select .ipt {
+    width: 82px;
+    color: #414a60;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.job_search .condition .dropdown_wrap .dropdown_select .icomoon::after {
+    content: '\e91c';
+}
+
+.job_search .condition .dropdown_wrap .dropdown_menu {
+    position: absolute;
+    width: 100%;
+    background-color: #fffdfd;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.job_search .condition .dropdown_wrap .dropdown_menu ul {
+    margin-bottom: 0;
+}
+
+.job_search .condition .dropdown_wrap .dropdown_menu ul li {
+    color: #666666;
+    line-height: 42px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.job_search .condition .dropdown_wrap .dropdown_menu ul li:hover {
+    background-color: #f2f5f9;
+}
+
+.resume {
+    float: right;
+    width: 290px;
+    height: 100%;
+    text-align: center;
+    background-color: #fff;
+    margin-left: 10px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resume .resume_h {
+    height: 45px;
+    color: #009999;
+    font-size: 22px;
+    border-bottom: 1px solid #0aa7a7;
+    margin: 20px;
+}
+
+.resume .resume_h::before {
+    font-family: 'icomoon';
+    content: '\e923';
+    vertical-align: text-top;
+}
+
+.resume .resume_bd {
+    display: flex;
+    justify-content: center;
+}
+
+.resume .my_btn {
+    width: 105px;
+    height: 38px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #009999;
+    border: none;
+    margin: 10px 10px;
+}
+
+.resume .my_btn:hover {
+    background-color: #0aa7a7;
+}
+
+.resume .my_content {
+    height: 130px;
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 10px;
+}
+
+.resume .my_content input {
+    width: 180px;
+    margin: 20px auto;
+}
+
+/* 职位列表模块 start*/
+
+.main {
+    margin-top: 15px;
+}
+
+.main .job_notFound {
+    display: none;
+    float: left;
+    position: relative;
+    width: 795px;
+    min-height: 520px;
+    font-size: 18px;
+    text-align: center;
+    color: #999;
+    background-color: #fff;
+    padding: 15px 20px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main .job_notFound .tip {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main .job_notFound .tip p {
+    margin-top: 20px;
+}
+
+.main .job_notFound img {
+    width: 300px;
+    margin-left: 95px;
+}
+
+.main .job_list {
+    float: left;
+    width: 795px;
+    min-height: 465px;
+    background-color: #fff;
+    /*box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);*/
+}
+
+.main .job_list ul li {
+    display: flex; /*11*/
+    align-items: center;
+    width: 795px;
+    height: 110px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+}
+
+.main .job_list ul li:last-child {
+    margin-bottom: 0;
+}
+
+.main .job_list ul li .job_title .job_name {
+    display: inline-block;
+    max-width: 188px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.main .job_list ul li:hover {
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.main .job_list ul li .primary {
+    height: 100%;
+    width: 494px;
+    padding: 23px 12px 23px 23px;
+}
+
+.main .job_list ul li .primary .job_title {
+    position: relative;
+    font-size: 18px;
+    color: #0aa7a7;
+}
+
+.main .job_list ul li .primary .job_area {
+    position: absolute;
+    font-size: 16px;
+    color: #0aa7a7;
+    margin: 0 10px;
+}
+
+.main .job_list ul li .primary .pub_time {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: #666666;
+    font-size: 13px;
+}
+
+.main .job_list ul li .primary .job_limit {
+    margin-top: 10px;
+}
+
+.main .job_list ul li .primary .job_limit .salary {
+    display: inline-block;
+    height: 20px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #f85659;
+    vertical-align: middle;
+}
+
+.main .job_list ul li .primary .job_limit p {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 13px;
+    margin-left: 8px;
+}
+
+.main .job_list ul li .primary .job_limit .vline {
+    display: inline-block;
+    width: 1px;
+    height: 15px;
+    background-color: #ccc;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.main .job_list ul li .m_line {
+    width: 1px;
+    height: 80px;
+    background-color: #ccc;
+    margin: 0 8px;
+}
+
+.main .job_list ul li .company_info {
+    height: 100%;
+    width: 285px;
+    padding: 21px 15px;
+}
+
+.main .job_list ul li .company_info .company_title {
+    font-size: 18px;
+    color: #0aa7a7;
+}
+
+.main .job_list ul li .company_info .company_title .company_name {
+    display: inline-block;
+    max-width: 210px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.main .job_list ul li .company_info .company_main {
+    margin-top: 10px;
+}
+
+.main .job_list ul li .company_info .company_main p {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 2px;
+}
+
+.main .job_list ul li .company_info .company_main .vline {
+    display: inline-block;
+    width: 1px;
+    height: 13px;
+    background-color: #ccc;
+    margin: 0 9px;
+    vertical-align: middle;
+}
+
+/* 职位列表模块 end*/
+
+/* 我的申请模块 start */
+
+.main .apply_list {
+    position: sticky;
+    top: 15px;
+    float: right;
+    width: 290px;
+    background-color: #fff;
+    margin-left: 10px;
+    padding: 10px 23px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main .apply_list .list_h {
+    position: relative;
+    height: 60px;
+    line-height: 60px;
+    font-size: 21px;
+    color: #0aa7a7;
+    border-bottom: 2px solid #0aa7a7;
+}
+
+.main .apply_list .list_h span::before {
+    font-family: 'icomoon';
+    content: '\e9b8';
+    vertical-align: top;
+}
+
+.main .apply_list .list_h a {
+    position: absolute;
+    display: inline-block;
+    top: 3px;
+    right: 15px;
+    font-size: 13px;
+    vertical-align: bottom;
+}
+
+.main .apply_list .list_h a::after {
+    position: absolute;
+    top: 1px;
+    font-family: 'icomoon';
+    content: '\e906';
+}
+
+.main .apply_list .no_signed {
+    display: none;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px 0;
+}
+
+.main .apply_list .no_signed h4 {
+    margin-bottom: 20px;
+}
+
+.main .apply_list .no_signed h4 a {
+    color: #009999;
+    text-decoration: underline;
+}
+
+.main .apply_list .no_signed img {
+    width: 180px;
+}
+
+.main .apply_list .no_signed .tip {
+
+}
+
+.main .apply_list .list_b ul li {
+    width: 243px;
+    height: 100px;
+    background-color: #fffdfd;
+    /* border-bottom: 1px solid #0aa7a7; */
+    margin-bottom: 6px;
+    margin-right: 6px;
+    transition: all 0.4s;
+}
+
+.main .apply_list .list_b ul li:hover {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    /* border-bottom: 1px solid #0aa7a7; */
+    transform: translateX(1px);
+}
+
+.main .apply_list .list_b ul li .job_info .job_top {
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    margin: 10px 10px 0 5px;
+}
+
+.main .apply_list .list_b ul li .job_info .job_top .job_name {
+    display: inline-block;
+    max-width: 135px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.main .apply_list .list_b ul li .job_info .job_top .job_salary {
+    float: right;
+    color: #f85659;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.main .apply_list .list_b ul li .job_info .job_text {
+    height: 20px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.main .apply_list .list_b ul li .job_info .job_text span {
+    float: left;
+    color: #8d92a1;
+    margin-left: 5px;
+}
+
+.main .apply_list .list_b ul li .job_info .job_bottom {
+    font-size: 14px;
+    color: #8d92a1;
+    margin: 10px 5px;
+    padding-top: 7px;
+    border-top: 1px solid #eef0f5;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 我的申请模块 end */
+
+/* 页数模块 start */
+
+.page_num {
+    width: 850px;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.page_num ul {
+    width: 396px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.page_num ul li {
+    float: left;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #e8e9ed;
+    margin: 0 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.page_num ul li:hover:not(.current) {
+    color: #0aa7a7;
+}
+
+.page_num ul .current {
+    color: #fff;
+    font-size: 16px;
+    background-color: #0aa7a7;
+}
+
+.footer {
+    margin-top: 15px;
+}
+
+/* 页数模块 end */
+/*上传简历模态框*/
+
+#upResume_popup .popup {
+    width: 260px;
+    top: 45%;
+    left: 50%;
+}
+
+#upResume_popup .popup_title {
+    border-bottom: 1px dashed #ccc;
+}
+
+#upResume_popup .popup_title .title_move {
+    height: 4px;
+}
+
+#upResume_popup .popup_title .title_div {
+    height: 50px;
+    line-height: 50px;
+}
+
+#upResume_popup .popup_content {
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+#upResume_popup .popup_content .item_input {
+    max-width: 225px;
+    margin-top: 15px;
+}
+
+#upResume_popup .popupBtn {
+    text-align: center;
+    margin: 10px 0 10px 50px;
+}
+
+#upResume_popup .popupBtn .popup_btn {
+    font-size: 12px;
+    margin: 5px;
+    padding: 5px 8px;
+}

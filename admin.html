@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>offer君 - 后台管理系统</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- 引入初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入公共样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- enterprise.css -->
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- 引入 jQuery 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入弹出特效-->
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <!-- 引入自制输入框 -->
+    <script src="layui/popup/popup.js"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入 enterprise.js 文件 -->
+    <script src="js/admin.js"></script>
+</head>
+<body>
+<div class="left">
+    <div class="enterprise_offer">
+        <div class="logo">
+            <a href="admin.html"><img src="images/logo.png" alt=""></a>
+            <span>管理系统</span>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="userImg">
+            <div class="circle">
+                <img src="" alt=" " class="user_img">
+            </div>
+        </div>
+        <p><span id="now"></span><span id="user_name"></span></p>
+        <ul id="click_ul">
+            <li class="current_li">新闻管理</li>
+            <li>发布新闻</li>
+            <li>职位管理</li>
+            <li>公司管理</li>
+            <li>用户管理</li>
+            <li>我的资料</li>
+            <li>修改密码</li>
+        </ul>
+    </div>
+</div>
+<div class="right">
+    <div class="nav">
+        <div class="mw_1000">
+            <div class="title" id="title">
+                职位管理
+            </div>
+            <ul id="menu_ul">
+                <li class="menu_to"><a href="javascript:;">新闻管理</a></li>
+                <li class="menu_to"><a href="javascript:;">发布新闻</a></li>
+                <li class="menu_to"><a href="javascript:;">职位管理</a></li>
+                <li class="menu_to"><a href="javascript:;">公司管理</a></li>
+                <li class="menu_to"><a href="javascript:;">用户管理</a></li>
+                <li class="menu_to"><a href="javascript:;">我的资料</a></li>
+                <li class="li_img">
+                    <a href="javascript:;">
+                        <img src="" alt=" " class="user_img">
+                    </a>
+                </li>
+                <li><a href="admin_sign.html" id="admin_exit">退出登录</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="manage_news page" id="news_manage_app">
+            <div class="operate">
+                <button class="btn" id="btnAll0" @click="btnAll">全选</button>
+                <div class="search">
+                    <input type="search" name="" placeholder="请输入新闻标题" v-model="keyword" @keydown.enter="searchNews">
+                    <button class="search_btn" @click="searchNews">搜索</button>
+                </div>
+                <div class="choose">
+                    <label for="">招聘类型：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected">{{choose_one}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li v-for="(item,index) in choose" @click="changeChoose(index)" :key="index">{{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="many_btn">
+                    <button class="btn btn_right red_btn" @click="deleteMany">批量删除</button>
+                </div>
+            </div>
+            <table class="news_table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll0" @click="checkAll"></th>
+                    <th>新闻封面</th>
+                    <th>新闻标题</th>
+                    <th>发布者</th>
+                    <th>新闻类型</th>
+                    <th>新闻作者</th>
+                    <th>发布时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in news" :key="index" v-if="isShow(item.news_type)" v-cloak>
+                    <td><input type="checkbox" :news_id="item.news_id" class="checkOne" @click="checkNews">
+                    </td>
+                    <td class="img_td"><img :src="item.news_image" alt=""></td>
+                    <td>{{item.news_title}}</td>
+                    <td>{{item.admin_name}}</td>
+                    <td>{{item.news_type}}</td>
+                    <td>{{item.news_author}}</td>
+                    <td>{{item.news_pubtime | format('yyyy-MM-dd hh:mm')}}</td>
+                    <td>
+                        <button class="operate_btn blue_btn" @click="editNews(item.news_id)">查看/编辑</button>
+                        <button class="operate_btn red_btn" @click="deleteNews(item.news_id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--未找到新闻-->
+            <div class="news_notFound">
+                <div class="tip">
+                    <img src="images/tip-errordata.png" alt="">
+                    <p>没找到相关新闻资讯，换一个试试！</p>
+                </div>
+            </div>
+        </div>
+        <div class="pub_news page" id="news_app">
+            <div class="message">
+                <h3>新闻资讯相关信息</h3>
+                <form action="news.html" id="news_form">
+                    <ul>
+                        <li>
+                            <label for="">新闻标题：</label>
+                            <input type="text" placeholder="请输入新闻标题" v-model="news_title">
+                        </li>
+                        <li class="clearfix">
+                            <label for="">新闻类型：</label>
+                            <div class="select_wrap">
+                                <div class="select_inner">
+                                    <span class="selected" id="news_type">求职必读</span>
+                                    <span class="icomoon"></span>
+                                </div>
+                                <div class="select_dropdown">
+                                    <ul>
+                                        <li>求职必读</li>
+                                        <li>行业知识</li>
+                                        <li>干货文章</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="">新闻作者：</label>
+                            <input type="text" placeholder="请输入新闻作者" v-model="news_author">
+                        </li>
+                        <li>
+                            <label for="">新闻封面：</label>
+                            <div class="img_box">
+                                <div class="mask" @click="change_newsImg"></div>
+                                <img src="" alt="" id="news_Img">
+                            </div>
+                            <input type="file" id="up_newsImg" name="file" style="display:none">
+                            <a href="javascript:;" @click="change_newsImg" id="newsImg_before">上传新闻封面</a>
+                            <a href="javascript:;" @click="save_newsImg" id="newsImg_after">确认上传</a>
+                        </li>
+                        <li>
+                            <label for="">新闻简介：</label>
+                            <textarea name="" v-model="news_brief" placeholder="请编写新闻简介..."></textarea>
+                        </li>
+                        <li>
+                            <label for="">详细内容：</label>
+                            <textarea name="" v-model="news_content" placeholder="请编写新闻详细内容..."></textarea>
+                        </li>
+                        <li>
+                            <input type="button" value="立即发布" @click="pubNews" class="btn">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="manage_job page" id="job_app">
+            <div class="operate">
+                <button class="btn" id="btnAll" @click="btnAll">全选</button>
+                <div class="search">
+                    <input type="search" name="" placeholder="请输入职位名称" v-model="keyword" @keydown.enter="searchJob">
+                    <button class="search_btn" @click="searchJob">搜索</button>
+                </div>
+                <div class="choose">
+                    <label for="">招聘类型：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected">{{choose_one}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li v-for="(item,index) in choose" @click="changeChoose(index)" :key="index">{{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="many_btn">
+                    <button class="btn btn_right red_btn" @click="deleteMany">批量删除</button>
+                </div>
+            </div>
+            <table class="job_table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll" @click="checkAll"></th>
+                    <th>岗位名称</th>
+                    <th>招聘类型</th>
+                    <th>工作经验</th>
+                    <th>学历要求</th>
+                    <th>薪资</th>
+                    <th>发布时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in job" :key="index" v-if="isShow(item.job_type)" v-cloak>
+                    <td><input type="checkbox" :job_id="item.job_id" class="checkOne" @click="checkJob">
+                    </td>
+                    <td>{{item.job_name}}</td>
+                    <td>{{item.job_type}}</td>
+                    <td>{{item.experience}}</td>
+                    <td>{{item.education}}</td>
+                    <td style="color:#f85659;">{{item.salary}}</td>
+                    <td>{{item.pub_time | format('yyyy-MM-dd hh:mm')}}</td>
+                    <td>
+                        <button class="operate_btn blue_btn" @click="editJob(item.job_id)">查看/编辑</button>
+                        <button class="operate_btn red_btn" @click="deleteJob(item.job_id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--未找到职位-->
+            <div class="job_notFound">
+                <div class="tip">
+                    <img src="images/tip-errordata.png" alt="">
+                    <p>没找到相关职位，换一个试试！</p>
+                </div>
+            </div>
+        </div>
+        <div class="manage_company page" id="company_app">
+            <div class="operate">
+                <button class="btn" id="btnAll2" @click="btnAll">全选</button>
+                <div class="search">
+                    <input type="search" name="" placeholder="请输入公司名称" v-model="keyword" @keydown.enter="searchCompany">
+                    <button class="search_btn" @click="searchCompany">搜索</button>
+                </div>
+                <div class="choose">
+                    <label for="">处理状态：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected" id="handle_status">{{choose_one}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li v-for="(item,index) in choose" @click="changeChoose(index)" :key="index">{{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="many_btn">
+                    <button class="btn btn_right blue_btn" @click="checkMany">批量审核</button>
+                    <button class="btn btn_right red_btn" @click="deleteMany">批量删除</button>
+                </div>
+            </div>
+            <table class="company_table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll2" @click="checkAll"></th>
+                    <th>公司名称</th>
+                    <th>公司logo</th>
+                    <th>行业类别</th>
+                    <th>融资阶段</th>
+                    <th>公司人数</th>
+                    <th>注册资金</th>
+                    <th>处理状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in company" :key="index" v-if="isShow(item.isPassed)" v-cloak>
+                    <td><input type="checkbox" :company_id="item.company_id" class="checkOne" @click="checkCompany">
+                    </td>
+                    <td>{{item.company_name}}</td>
+                    <td><img :src="item.company_imgUrl" alt=""></td>
+                    <td>{{item.company_type}}</td>
+                    <td>{{item.finance}}</td>
+                    <td>{{item.headcount}}</td>
+                    <td>{{item.registered_capital}}</td>
+                    <td>
+                        <span class="none_status" v-if="handle(item.isPassed)">待审核</span>
+                        <span class="ok_status" v-if="handleYes(item.isPassed)">通过审核</span>
+                        <span class="no_status" v-if="handleNo(item.isPassed)">未通过审核</span>
+                    </td>
+                    <td>
+                        <button class="operate_btn blue_btn" @click="checkIt(item.company_id)">审核</button>
+                        <button class="operate_btn red_btn" @click="deleteCompany(item.company_id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--未找到公司-->
+            <div class="company_notFound">
+                <div class="tip">
+                    <img src="images/tip-errordata.png" alt="">
+                    <p>没找到相关公司，换一个试试！</p>
+                </div>
+            </div>
+        </div>
+        <div class="manage_user page" id="users_app">
+            <div class="operate">
+                <button class="btn" id="btnAll3" @click="btnAll">全选</button>
+                <div class="search">
+                    <input type="search" name="" placeholder="请输入用户名" v-model="keyword" @keydown.enter="searchUser">
+                    <button class="search_btn" @click="searchUser">搜索</button>
+                </div>
+                <div class="choose">
+                    <label for="">用户类型：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected" id="handle_status1">{{choose_one}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li v-for="(item,index) in choose" @click="changeChoose(index)" :key="index">{{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="many_btn">
+                    <button class="btn btn_right blue_btn" @click="resetMany">批量重置密码</button>
+                    <button class="btn btn_right red_btn" @click="deleteMany">批量删除</button>
+                </div>
+            </div>
+            <table class="user_table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll3" @click="checkAll"></th>
+                    <th>用户名</th>
+                    <th>用户头像</th>
+                    <th>用户类型</th>
+                    <th>真实姓名</th>
+                    <th>性别</th>
+                    <th>手机号码</th>
+                    <th>注册时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in user" :key="index" v-if="isShow(item.user_type)" v-cloak>
+                    <td><input type="checkbox" :user_id="item.user_id" class="checkOne" @click="checkUser">
+                    </td>
+                    <td>{{item.username}}</td>
+                    <td><img :src="item.user_imgUrl" alt=""></td>
+                    <td>{{item.user_type}}</td>
+                    <td>{{item.true_name}}</td>
+                    <td>{{item.sex}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.register_time}}</td>
+                    <td class="operate_td">
+                        <button class="operate_btn blue_btn" v-if="item.user_type=='个人用户'"
+                                @click="checkResume(item.username)">
+                            审核
+                        </button>
+                        <button class="operate_btn green_btn" @click="resetPassword(item.user_id)">重置密码</button>
+                        <button class="operate_btn red_btn" @click="deleteUser(item.user_id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--未找到用户-->
+            <div class="user_notFound">
+                <div class="tip">
+                    <img src="images/tip-errordata.png" alt="">
+                    <p>没找到相关用户，换一个试试！</p>
+                </div>
+            </div>
+        </div>
+        <div class="manage_my page" id="user_app">
+            <div class="message_show" v-show="isShow">
+                <form action="" id="form">
+                    <div class="big_box">
+                        <div class="img_box">
+                            <div class="mask" @click="changeImg"></div>
+                            <img :src="user.user_imgUrl" alt="" id="img">
+                        </div>
+                        <input type="file" id="up_img" name="file" style="display:none">
+                        <a href="javascript:;" @click="changeImg" id="img_before">更换头像</a>
+                        <a href="javascript:;" @click="saveImg" id="img_after">确认更换</a>
+                    </div>
+                    <ul>
+                        <li>
+                            <span>姓名：</span><i>{{user.admin_name}}</i>
+                        </li>
+                        <li>
+                            <span>性别：</span><i>{{user.admin_sex}}</i>
+                        </li>
+                        <li>
+                            <span>我的职位：</span><i>{{user.admin_type}}</i>
+                        </li>
+                        <li>
+                            <span>出生日期：</span><i>{{user.admin_birthday}}</i>
+                        </li>
+                        <li>
+                            <span>手机号码：</span><i>{{user.admin_phone}}</i>
+                        </li>
+                        <li>
+                            <span>电子邮箱：</span><i>{{user.admin_email}}</i>
+                        </li>
+                    </ul>
+                    <div class="btn_div">
+                        <input type="button" value="修改个人信息" class="btn" @click="change">
+                    </div>
+                </form>
+            </div>
+            <div class="message_change" v-show="isChange">
+                <h3>修改个人信息</h3>
+                <form action="">
+                    <ul>
+                        <li>
+                            <label for="">我的姓名：</label>
+                            <input type="text" placeholder="请输入姓名"
+                                   :value="user.admin_name" id="admin_name">
+                        </li>
+                        <li class="sex" id="sex">
+                            <label for="">我的性别：</label>
+                            <span :class="{current_sex:isMan}">男</span>
+                            <span :class="{current_sex:isWoman}">女</span>
+                        </li>
+                        <li>
+                            <label for="">我的职位：</label>
+                            <input type="text" placeholder="请输入您的职位  " :value="user.admin_type" id="admin_type">
+                        </li>
+                        <li>
+                            <label for="">出生日期：</label>
+                            <input type="date" :value="user.admin_birthday" id="admin_birthday">
+                        </li>
+                        <li>
+                            <label for="">手机号码：</label>
+                            <input type="tel" placeholder="请输入手机号码" :value="user.admin_phone" id="admin_phone">
+                        </li>
+                        <li>
+                            <label for="">电子邮箱：</label>
+                            <input type="email" placeholder="请输入邮箱" :value="user.admin_email" id="admin_email">
+                        </li>
+
+                    </ul>
+                    <div class="btn_div">
+                        <input type="button" value="取消修改" class="btn" @click="show">
+                        <input type="button" value="确认修改" class="btn" @click="save">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="change_password page">
+            <div class="message">
+                <form action="">
+                    <ul>
+                        <li>
+                            <label for="">旧密码：</label>
+                            <input type="password" id="old_password" placeholder="请先输入旧密码">
+                            <p id="password_result"></p>
+                        </li>
+                        <li>
+                            <label for="">新密码：</label>
+                            <input type="password" id="new_password" placeholder="请输入新密码">
+                            <span class="eyes"></span>
+                            <p id="new_password_result"></p>
+                        </li>
+                        <li>
+                            <label for="">确认密码：</label>
+                            <input type="password" id="new_password_checked" placeholder="请再次输入新密码">
+                            <p id="new_password_checked_result"></p>
+                        </li>
+                        <li>
+                            <input type="button" class="btn" id="savePassword" value="保存密码">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框模块 begin -->
+    <!-- 职位详情 -->
+    <div class="popup_box" id="news_popup">
+        <div class="popup">
+            <div class="popup_title">
+                <div class="title_move"></div>
+                <div class="title_div">新闻详情</div>
+                <button class="closeBtn">关闭</button>
+            </div>
+            <div class="popup_content">
+                <div class="popup_item">
+                    <label>新闻标题：</label>
+                    <input type="text" class="item_input" id="news_title" :value="news.news_title"
+                           placeholder="请输入新闻标题">
+                </div>
+                <div class="popup_item">
+                    <label>新闻类型：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected" id="re_news_type">{{news.news_type}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li>求职必读</li>
+                                <li>行业知识</li>
+                                <li>干货文章</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_item">
+                    <label>新闻作者：</label>
+                    <input type="text" class="item_input" id="news_author" :value="news.news_author"
+                           placeholder="请输入新闻作者">
+                </div>
+                <div class="popup_item">
+                    <label>新闻简介：</label>
+                    <textarea name="" id="news_brief" class="item_textarea" :value="news.news_brief"
+                              placeholder="请编写新闻简介..."></textarea>
+                </div>
+                <div class="popup_item">
+                    <label>新闻内容：</label>
+                    <textarea name="" id="news_content" class="item_textarea" :value="news.news_content"
+                              placeholder="请编写新闻内容..."></textarea>
+                </div>
+            </div>
+            <div class="popupBtn">
+                <button class="popup_btn cancel_btn">取消修改</button>
+                <button class="popup_btn ok_btn" @click="updateNews">确认修改</button>
+            </div>
+        </div>
+        <!-- 遮盖层 -->
+        <div class="mask_box" class="mask_box"></div>
+    </div>
+    <!-- 职位详情 -->
+    <div class="popup_box" id="job_popup">
+        <div class="popup">
+            <div class="popup_title">
+                <div class="title_move"></div>
+                <div class="title_div">职位详情</div>
+                <button class="closeBtn">关闭</button>
+            </div>
+            <div class="popup_content">
+                <div class="popup_item">
+                    <label>职位名称：</label>
+                    <input type="text" class="item_input" id="re_job_name" :value="job.name" placeholder="请输入职位名称">
+                </div>
+                <div class="popup_item">
+                    <label>职位类型：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected" id="re_job_type">{{job.type}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li>校园招聘</li>
+                                <li>社会招聘</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_item">
+                    <label>招聘人数：</label>
+                    <input type="number" class="item_input" id="re_wanted_num" :value="job.wanted_num"
+                           placeholder="请输入招聘人数，单位：人">
+                </div>
+                <div class="popup_item">
+                    <label>职位描述：</label>
+                    <textarea name="" id="re_job_description" class="item_textarea" :value="job.job_description"
+                              placeholder="请编写职位描述..."></textarea>
+                </div>
+                <div class="popup_item">
+                    <label>工作地点：</label>
+                    <input type="text" id="re_work_place" class="item_input" :value="job.area"
+                           placeholder="请输入详细地址（城市+区/县+街道、门牌号、楼栋号等）">
+                </div>
+                <div class="popup_item">
+                    <label>薪资范围：</label>
+                    <input type="text" id="re_salary" class="item_input" :value="job.salary" placeholder="请输入薪资范围">
+                </div>
+                <div class="popup_item">
+                    <label>任职要求：</label>
+                    <textarea name="" id="re_job_skill" class="item_textarea" :value="job.job_skill"
+                              placeholder="请编写任职要求..."></textarea>
+                </div>
+                <div class="popup_item">
+                    <label>经验要求：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected" id="re_experience">{{job.require}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li>不限</li>
+                                <li>在校/应届</li>
+                                <li>1年以内</li>
+                                <li>1~3年</li>
+                                <li>3~5年</li>
+                                <li>5~10年</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_item">
+                    <label>最低学历：</label>
+                    <div class="select_wrap">
+                        <div class="select_inner">
+                            <span class="selected" id="re_education">{{job.education}}</span>
+                            <span class="icomoon"></span>
+                        </div>
+                        <div class="select_dropdown">
+                            <ul>
+                                <li>不限</li>
+                                <li>大专</li>
+                                <li>本科</li>
+                                <li>硕士</li>
+                                <li>博士</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popupBtn">
+                <button class="popup_btn cancel_btn">取消修改</button>
+                <button class="popup_btn ok_btn">确认修改</button>
+            </div>
+        </div>
+        <!-- 遮盖层 -->
+        <div class="mask_box" class="mask_box"></div>
+    </div>
+    <!-- 审核公司模态框 -->
+    <div class="popup_box" id="company_popup">
+        <div class="popup">
+            <div class="popup_title">
+                <div class="title_move"></div>
+                <div class="title_div">公司审核</div>
+                <button class="closeBtn">关闭</button>
+            </div>
+            <div class="popup_content">
+                <div class="popup_item">
+                    <label>公司名称：</label>
+                    <input type="text" class="item_input" disabled :value="company.company_name">
+                </div>
+                <div class="popup_item">
+                    <label>公司logo：</label>
+                    <img :src="company.company_imgUrl" alt="">
+                </div>
+                <div class="popup_item">
+                    <label>行业类别：</label>
+                    <input type="text" class="item_input" disabled :value="company.company_type">
+                </div>
+                <div class="popup_item">
+                    <label>融资阶段：</label>
+                    <input type="text" class="item_input" disabled :value="company.finance">
+                </div>
+                <div class="popup_item">
+                    <label>公司地址：</label>
+                    <input type="text" class="item_input" disabled :value="company.address">
+                </div>
+                <div class="popup_item">
+                    <label>公司人数：</label>
+                    <input type="text" class="item_input" disabled :value="company.headcount">
+                </div>
+                <div class="popup_item">
+                    <label>公司介绍：</label>
+                    <p class="text_p" v-html="company.introduction"></p>
+                </div>
+                <div class="popup_item">
+                    <label>注册资金：</label>
+                    <input type="text" class="item_input" disabled :value="company.representative">
+                </div>
+                <div class="popup_item">
+                    <label>法定代表：</label>
+                    <input type="text" class="item_input" disabled :value="company.registered_capital">
+                </div>
+                <div class="popup_item">
+                    <label>注册日期：</label>
+                    <input type="date" class="item_input" disabled :value="company.registered_date">
+                </div>
+                <div class="popup_item">
+                    <label for="">营业执照：</label>
+                    <p class="img_p">
+                        <a :href="company.business_imgUrl" target="_blank">
+                            <img :src="company.business_imgUrl" alt="用户未上传图片">
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="popupBtn">
+                <button class="popup_btn" @click="passNo">不通过</button>
+                <button class="popup_btn ok_btn" @click="passOK">审核通过</button>
+            </div>
+        </div>
+        <!-- 遮盖层 -->
+        <div class="mask_box" class="mask_box"></div>
+    </div>
+    <!-- 批量审核模态框 -->
+    <div class="popup_box" id="check_popup">
+        <div class="popup">
+            <div class="popup_title">
+                <div class="title_move"></div>
+                <div class="title_div">批量审核</div>
+                <button class="closeBtn">关闭</button>
+            </div>
+            <div class="popup_content">
+                <p>请选择您需要的批量操作！</p>
+            </div>
+            <div class="popupBtn">
+                <button class="popup_btn" id="passNoMany">不通过</button>
+                <button class="popup_btn ok_btn" id="passOKMany">批量通过</button>
+            </div>
+        </div>
+        <!-- 遮盖层 -->
+        <div class="mask_box" class="mask_box"></div>
+    </div>
+    <!-- 简历查看 -->
+    <div class="popup_box" id="resume_popup">
+        <div class="popup">
+            <div class="popup_title">
+                <div class="title_move"></div>
+                <div class="title_div">简历审核</div>
+                <button class="closeBtn" id="isRead">关闭</button>
+            </div>
+            <div class="popup_content">
+                <div class="resume_item userinfo">
+                    <div class="info">
+                        <h3 class="uname">{{resume.worker_name}}</h3>
+                        <ul>
+                            <li>{{age}}岁</li>
+                            <li class="li_line">|</li>
+                            <li>{{resume.worker_sex}}</li>
+                            <li class="li_line">|</li>
+                            <li>{{resume.education}}</li>
+                            <li class="li_line">|</li>
+                            <li>{{resume.worker_phone}}</li>
+                            <li class="li_line">|</li>
+                            <li>{{resume.worker_address}}</li>
+                        </ul>
+                    </div>
+                    <div class="user_head">
+                        <img :src="resume.user_imgUrl" alt="">
+                    </div>
+                </div>
+                <div class="resume_item wanted_job">
+                    <div class="info">
+                        <h3>求职期望</h3>
+                        <ul>
+                            <li>{{resume.desirable_job}}</li>
+                            <li class="li_line">|</li>
+                            <li>{{resume.desirable_city}}</li>
+                            <li class="li_line">|</li>
+                            <li>{{resume.desirable_salary}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item education ">
+                    <div class="info">
+                        <h3>教育经历</h3>
+                        <ul class="specific">
+                            <li>
+                                <div class="school"><span>{{resume.school}}</span><em>{{resume.school_period}}</em>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="major">
+                                    <span>{{resume.specialized_subject}}</span><em>{{resume.education}}</em>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info_title">在校经历：</div>
+                                <p v-html="resume.school_experience"></p>
+                            </li>
+                            <li>
+                                <div class="info_title">入取通知书：</div>
+                                <p class="img_p">
+                                    <a :href="resume.school_imgUrl" target="_blank">
+                                        <img :src="resume.school_imgUrl" alt="用户未上传入取通知书">
+                                    </a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item item_experience">
+                    <div class="info">
+                        <h3>项目经历</h3>
+                        <ul class="specific clearfix">
+                            <li>
+                                <span class="num">1</span>
+                                <div class="info_title">项目名称：</div>
+                                <p>{{resume.project_name}}</p>
+                            </li>
+                            <li>
+                                <div class="info_title">项目时间：</div>
+                                <p>{{resume.project_period}}</p>
+                            </li>
+                            <li>
+                                <div class="info_title">项目描述：</div>
+                                <p v-html="resume.project_description"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item work_experience">
+                    <div class="info">
+                        <h3>工作经历</h3>
+                        <ul class="specific clearfix">
+                            <li>
+                                <span class="num">1</span>
+                                <div class="info_title">公司名称：</div>
+                                <p>{{resume.work_company}}</p>
+                                <i>{{work_type}}</i>
+                            </li>
+                            <li>
+                                <div class="info_title">在职时间：</div>
+                                <p>{{resume.work_period}}</p>
+                            </li>
+                            <li>
+                                <div class="info_title">工作内容：</div>
+                                <p v-html="resume.work_content"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item certificate">
+                    <div class="info">
+                        <h3>资格证书</h3>
+                        <ul>
+                            <li v-for="item in certificate">{{item}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="popupBtn">
+                <button class="popup_btn" @click="passNo(resume.resume_id)">不通过</button>
+                <button class="popup_btn ok_btn" @click="passOK(resume.resume_id)">审核通过</button>
+            </div>
+        </div>
+        <!-- 遮盖层 -->
+        <div class="mask_box" class="mask_box"></div>
+    </div>
+    <!--模态框模块 end -->
+</div>
+</body>
+</html>

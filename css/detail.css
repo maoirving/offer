@@ -1,0 +1,197 @@
+.main {
+    margin: 20px 0;
+}
+
+.detail_content {
+    float: left;
+    width: 765px;
+    background-color: #fff;
+    padding: 10px 40px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail_content .content_top {
+    height: 70px;
+    font-size: 24px;
+    color: #0aa7a7;
+    line-height: 70px;
+    padding-left: 10px;
+    font-weight: normal;
+    border-bottom: 2px solid #0aa7a7;
+}
+
+.detail_content .content_body {
+    padding: 20px 0;
+}
+
+.detail_content .content_body .job_hd {
+    height: 80px;
+    border-bottom: 1px solid #ccc;
+}
+
+.detail_content .content_body .job_hd .job_name {
+    font-size: 25px;
+}
+
+.detail_content .content_body .job_hd .job_salary {
+    color: #f85659;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.detail_content .content_body .job_hd .job_req {
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 8px;
+}
+
+.detail_content .content_body .job_hd .job_req span {
+    float: left;
+    color: #8d92a1;
+    margin-right: 10px;
+}
+
+.detail_content .content_body .job_bd h3 {
+    font-size: 16px;
+    margin: 18px 0;
+}
+
+.detail_content .content_body .job_bd .job_text p {
+    font-size: 14px;
+    color: #61687c;
+    margin-bottom: 10px;
+    line-height: 200%;
+}
+
+.detail_content .content_body .job_bd .job_text span {
+    margin-right: 20px;
+}
+
+.detail_content .content_body .job_apply {
+    text-align: center;
+    margin: 40px auto 0px;
+}
+
+.job_apply .detail_btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #009999;
+    border-radius: 50px;
+    margin: 0 15px;
+}
+
+.job_apply .detail_btn:hover {
+    background-color: #0aa7a7;
+}
+
+.company_detail {
+    position: sticky;
+    float: left;
+    top: 15px;
+    width: 320px;
+    background-color: #fff;
+    margin-left: 15px;
+    padding: 10px 30px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.company_detail .company_hd {
+    height: 154px;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 16px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.company_detail .company_hd img {
+    width: 80px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.company_detail .company_hd h5 {
+    font-weight: normal;
+    color: #0aa7a7;
+    margin-top: 15px;
+}
+
+.company_detail .company_bd h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.company_detail .company_bd p {
+    font-size: 14px;
+    color: #61687c;
+    margin-bottom: 5px;
+}
+
+.company_detail .company_bd .company_brief {
+    text-indent: 2em;
+}
+
+/*发送简历模态框*/
+
+#sendResume_popup .popup {
+    width: 260px;
+    top: 45%;
+    left: 50%;
+}
+
+#sendResume_popup .popup_title {
+    border-bottom: 1px dashed #ccc;
+}
+
+#sendResume_popup .popup_title .title_move {
+    height: 4px;
+}
+
+#sendResume_popup .popup_title .title_div {
+    height: 50px;
+    line-height: 50px;
+}
+
+#sendResume_popup .popup_content {
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+#sendResume_popup .popup_content .choose_div {
+    margin-top: 20px;
+}
+
+#sendResume_popup .popup_content .choose_btn {
+    color: #666;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#sendResume_popup .popup_content .choose_btn:last-child {
+    margin-left: 5px;
+}
+
+#sendResume_popup .popup_content .choose_btn:hover {
+    background-color: #eaf7f7;
+    border: 1px solid #009999;
+}
+
+#sendResume_popup .popup_content .current_choose {
+    background-color: #eaf7f7;
+    border: 1px solid #009999;
+}
+
+#sendResume_popup .popupBtn {
+    text-align: center;
+    margin: 10px 0 10px 50px;
+}
+
+#sendResume_popup .popupBtn .popup_btn {
+    font-size: 12px;
+    margin: 5px;
+    padding: 5px 8px;
+}

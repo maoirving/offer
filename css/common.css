@@ -1,0 +1,151 @@
+/* 声明字体图标 */
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?fwqno2');
+    src: url('../fonts/icomoon.eot?fwqno2#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?fwqno2') format('truetype'), url('../fonts/icomoon.woff?fwqno2') format('woff'), url('../fonts/icomoon.svg?fwqno2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.icomoon {
+    font-family: 'icomoon';
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* 版心 */
+
+.mw {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.style_color {
+    color: #0aa7a7;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+button, input[type=button], input[type=search], input[type=submit] {
+    transition: all 0.4s;
+}
+
+a {
+    transition: all 0.2s;
+
+}
+
+/*导航栏*/
+.shortcut {
+    height: 55px;
+    color: #fff;
+    background-color: #202329;
+}
+
+.shortcut a {
+    color: #eee;
+    transition: all 0.4s;
+}
+
+.shortcut .mw ul li {
+    float: left;
+    height: 55px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 55px;
+    padding: 0 15px;
+}
+
+.shortcut .mw ul li:hover a {
+    color: #0aa7a7;
+}
+
+.shortcut .mw ul .img_li {
+    display: none;
+}
+
+.shortcut .mw ul .img_li a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.shortcut .mw ul .img_li a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.shortcut .current_nav {
+    color: #fff;
+    border-bottom: 3px solid #0aa7a7;
+}
+
+.shortcut .current_nav a {
+    color: #0aa7a7;
+}
+
+.shortcut .current {
+    background-color: #199292;
+}
+
+.shortcut .fr ul li:not(:nth-child(1)) {
+    display: none;
+}
+
+/* 返回顶部 */
+
+.goTop {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    right: 3%;
+    bottom: 15%;
+    font-family: 'icomoon';
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 55px;
+    cursor: pointer;
+    background-color: #838282;
+    border-radius: 50%;
+    transform: translateX(130px);
+}
+
+/* 底部模块  */
+
+.footer {
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    background-color: #202329;
+    padding: 31px 200px;
+}

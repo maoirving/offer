@@ -1,0 +1,463 @@
+.header {
+    display: flex;
+    align-items: center;
+    height: 120px;
+}
+
+.logo {
+    width: 252px;
+    height: 81px;
+}
+
+.logo a {
+    display: block;
+    width: 252px;
+    height: 81px;
+    background: url(../images/logo.png) no-repeat;
+    /* font-size: 0;京东做法 */
+    /* 淘宝的做法让文字隐藏 */
+    text-indent: -9999px;
+    overflow: hidden;
+    animation: rotate 2s 1s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.search {
+    width: 624px;
+    height: 44px;
+    /* border: 2px solid #25bb9b; */
+    margin-left: 40px;
+}
+
+.search input {
+    float: left;
+    width: 520px;
+    height: 45px;
+    padding: 0 10px;
+    border: 1px solid #009999;
+    border-right: none;
+}
+
+.search button {
+    float: left;
+    width: 100px;
+    height: 45px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #009999;
+}
+
+.search button:hover {
+    background-color: #0aa7a7;
+}
+
+.hotwords {
+    position: absolute;
+    top: 86px;
+    left: 300px;
+}
+
+.hotwords a {
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.recommend .new_job {
+    float: left;
+    width: 247px;
+    height: 367px;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommend .new_job h3 {
+    position: relative;
+    height: 49px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 49px;
+    background-color: #0aa7a7;
+    border-bottom: 1px solid #ccc;
+}
+
+.recommend .new_job h3 span::before {
+    font-size: 20px;
+    content: '\e945';
+    font-family: 'icomoon';
+    margin-right: 8px;
+    vertical-align: bottom;
+}
+
+.recommend .new_job ul li {
+    position: relative;
+    padding: 6px 16px;
+    border-bottom: 1px dashed #ccc;
+    transition: all 0.3s;
+}
+
+.recommend .new_job ul li:not(:last-child) a {
+    display: inline-block;
+    max-width: 151px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: all 0.4s;
+}
+
+.recommend .new_job ul li:not(:last-child):hover {
+    /* background-color: #58b0b3; */
+    background-color: #f4f4f4;
+}
+
+.recommend .new_job ul li:not(:last-child):hover a {
+    padding-left: 6px;
+}
+
+.recommend .new_job ul li a {
+    font-size: 14px;
+}
+
+.recommend .new_job ul li:last-child {
+    padding: 5px 0;
+    text-align: center;
+    margin-top: 7px;
+    border-bottom: none;
+}
+
+.recommend .new_job ul li:last-child a {
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    font-size: 13px;
+    line-height: 28px;
+    background-color: #f4f4f4;
+    border-radius: 25px;
+    transition: all 0.3s;
+}
+
+.recommend .new_job ul li:last-child a:hover {
+    color: #fff;
+    background-color: #0aa7a7;
+}
+
+.recommend .new_job ul li span {
+    position: absolute;
+    top: 27%;
+    right: 14px;
+    font-size: 12px;
+    color: #f85659;
+}
+
+.recommend .focus {
+    position: relative;
+    float: left;
+    width: 593px;
+    height: 367px;
+    margin-left: 15px;
+    overflow: hidden;
+}
+
+.recommend .focus .swiper-item > img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+
+.recommend .news {
+    float: left;
+    width: 230px;
+    height: 367px;
+    margin-left: 15px;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommend .news .news_hd {
+    height: 49px;
+    font-size: 16px;
+    color: #0aa7a7;
+    text-align: center;
+    line-height: 49px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.recommend .news .news_hd span::before {
+    font-size: 22px;
+    content: '\e94a';
+    font-family: 'icomoon';
+    vertical-align: bottom;
+    margin-right: 8px;
+}
+
+.recommend .news .news_bd ul li {
+    font-size: 13px;
+    padding: 9px 12px;
+}
+
+.recommend .news .news_bd ul li:nth-child(2n-1) {
+    background-color: #f4f4f4;
+}
+
+.recommend .news .news_bd ul li span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    background-color: #009999;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.recommend .news .news_bd ul li:nth-child(-n+3) span {
+    background-color: #ee3e3e;
+}
+
+.recommend .news .news_bd ul li:not(:last-child) {
+    list-style: square;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.recommend .news .news_bd ul li:last-child {
+    padding: 9px 0;
+    text-align: center;
+    margin: 2px auto 0;
+}
+
+.recommend .news .news_bd ul li:last-child a {
+    display: inline-block;
+    width: 190px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.recommend .news .news_bd ul li:last-child a:hover {
+    color: #fff;
+    background-color: #0aa7a7;
+}
+
+/* 分割线 */
+
+.divider {
+    font-size: 22px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    width: 100px;
+    height: 1px;
+    background-color: #d1d4db;
+}
+
+/* recruitment 职位模块制作 */
+
+.recruitment {
+    margin-top: 20px;
+    height: 425px;
+}
+
+.recruitment .campus {
+    float: left;
+    width: 542px;
+    background-color: #f5f5f5;
+}
+
+.recruitment .campus .campus_bh {
+    height: 60px;
+    font-size: 20px;
+    color: #0aa7a7;
+    line-height: 60px;
+    padding-left: 30px;
+    background-color: #fff;
+    border-bottom: 2px solid #0aa7a7;
+    overflow: hidden;
+}
+
+.recruitment .campus .campus_bh a {
+    float: right;
+    font-size: 14px;
+    margin-right: 20px;
+    vertical-align: text-bottom;
+}
+
+.recruitment .campus .campus_bh a::after {
+    font-family: 'icomoon';
+    content: '\e906';
+}
+
+.recruitment .campus .campus_bd {
+    width: 600px;
+    overflow: hidden;
+}
+
+.recruitment .campus .campus_bd ul li {
+    float: left;
+    width: 268px;
+    height: 110px;
+    background-color: #fff;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    transition: all 0.4s;
+}
+
+.recruitment .campus .campus_bd ul li:hover {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.recruitment .campus .campus_bd ul li .job_info .job_top {
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    margin: 10px 10px 0;
+}
+
+.recruitment .campus .campus_bd ul li .job_info .job_top .job_name {
+    display: inline-block;
+    max-width: 148px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.recruitment .campus .campus_bd ul li .job_info .job_top .job_salary {
+    float: right;
+    color: #f85659;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.recruitment .campus .campus_bd ul li .job_info .job_text {
+    height: 20px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.recruitment .campus .campus_bd ul li .job_info .job_text span {
+    float: left;
+    color: #8d92a1;
+    margin-left: 10px;
+}
+
+.recruitment .campus .campus_bd ul li .job_info .job_bottom {
+    font-size: 14px;
+    color: #8d92a1;
+    margin: 10px;
+    padding-top: 7px;
+    border-top: 1px solid #eef0f5;
+}
+
+.recruitment .society {
+    float: left;
+    width: 542px;
+    background-color: #f5f5f5;
+    margin-left: 16px;
+    overflow: hidden;
+}
+
+.recruitment .society .society_bh {
+    height: 60px;
+    font-size: 20px;
+    color: #0aa7a7;
+    line-height: 60px;
+    padding-left: 30px;
+    background-color: #fff;
+    border-bottom: 2px solid #0aa7a7;
+}
+
+.recruitment .society .society_bh a {
+    float: right;
+    font-size: 14px;
+    margin-right: 20px;
+    vertical-align: text-bottom;
+}
+
+.recruitment .society .society_bh a::after {
+    font-family: 'icomoon';
+    content: '\e906';
+}
+
+.recruitment .society .society_bd {
+    width: 600px;
+    overflow: hidden;
+}
+
+.recruitment .society .society_bd ul li {
+    float: left;
+    width: 268px;
+    height: 110px;
+    background-color: #fff;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    transition: all 0.4s;
+}
+
+.recruitment .society .society_bd ul li:hover {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.recruitment .society .society_bd ul li .job_info .job_top {
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    margin: 10px 10px 0;
+}
+
+.recruitment .society .society_bd ul li .job_info .job_top .job_name {
+    display: inline-block;
+    max-width: 176px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.recruitment .society .society_bd ul li .job_info .job_top .job_salary {
+    float: right;
+    color: #f85659;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.recruitment .society .society_bd ul li .job_info .job_text {
+    height: 20px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.recruitment .society .society_bd ul li .job_info .job_text span {
+    float: left;
+    color: #8d92a1;
+    margin-left: 10px;
+}
+
+.recruitment .society .society_bd ul li .job_info .job_bottom {
+    font-size: 14px;
+    color: #8d92a1;
+    margin: 10px;
+    padding-top: 7px;
+    border-top: 1px solid #eef0f5;
+}

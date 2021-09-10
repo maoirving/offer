@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offer君 | 新闻资讯</title>
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- 引入初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入公共样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="css/news.css">
+    <!-- 引入 jQuery 文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入 vue.min.js 文件 -->
+    <script src="js/vue.min.js"></script>
+    <!-- 引入 common.js 文件 -->
+    <script src="js/common.js"></script>
+    <!-- 引入返回顶部  -->
+    <script src="js/GoToTop.js"></script>
+    <!-- 引入 news.js 文件 -->
+    <script src="js/news.js"></script>
+</head>
+
+<body>
+<!-- 引入快捷导航模块 -->
+<?php require "shortcut.html"; ?>
+<!-- header头部模块制作 start -->
+<!-- main模块制作 start -->
+<div class="mw">
+    <div class="main" id="news_app">
+        <ul>
+            <li v-for="(item,index) in news" :key="index" v-cloak>
+                <div class="img_wrap">
+                    <a href="javascript:;" @click.prevent="skip(item.news_id)">
+                        <img :src="item.news_image" alt="">
+                    </a>
+                </div>
+                <div class="text">
+                    <div class="news_title">
+                        <a href="javascript:;" @click.prevent="skip(item.news_id)">{{item.news_title}}</a>
+                    </div>
+                    <div class="news_brief">
+                        <p>{{item.news_brief}}</p>
+                    </div>
+                    <div class="info">
+                        <span class="type">【{{item.news_type}}】</span>
+                        <i>·</i>
+                        <span class="author">{{item.news_author}}</span>
+                        <i>·</i>
+                        <span class="time">
+                                {{item.news_pubtime | format('yyyy-MM-dd hh:mm')}}
+                            </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- main模块制作 end -->
+<!-- 返回顶部模块 start  -->
+<div class="goTop" id="js-go_top">
+    
+</div>
+<!-- 返回顶部模块 end  -->
+<!-- 引入底部模块 -->
+<?php require "footer.html"; ?>
+</body>
+
+</html>

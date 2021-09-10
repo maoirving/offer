@@ -1,0 +1,260 @@
+body {
+    background-color: #fff;
+}
+
+.header {
+    height: 70px;
+    padding: 0 5px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.header .mw {
+    width: 1000px;
+}
+
+.header .logo {
+    float: left;
+    color: #333333;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.header img {
+    width: 150px;
+    margin-right: 15px;
+}
+
+
+.header .login {
+    line-height: 70px;
+    float: right;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.header .enterprise {
+    float: right;
+    line-height: 70px;
+    font-size: 16px;
+    margin-right: 25px;
+}
+
+.header .enterprise a {
+    color: #009999;
+}
+
+.container {
+    height: 589px;
+    background-color: #9ac9c9;
+    padding-top: 43px;
+    background: url(../upload/bgc2.jpg) no-repeat fixed center;
+}
+
+.main {
+    width: 740px;
+    height: 503px;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 1px 2px 10px rgba(99, 97, 97, 0.2);
+}
+
+.main .main_h {
+    height: 90px;
+    line-height: 90px;
+    color: #fff;
+    font-size: 26px;
+    text-align: center;
+    background-color: #0aa7a7;
+}
+
+.main .sign_slide {
+    position: relative;
+    float: left;
+    width: calc(100% - 450px);
+    height: 100%;
+    overflow: hidden;
+}
+
+.main .sign_slide ul {
+    height: 416px;
+    border-right: 1px dashed #ccc;
+}
+
+.main .sign_slide ul li {
+    padding: 19px 40px;
+}
+
+.main .sign_slide ul li h3 {
+    font-weight: normal;
+    font-size: 16px;
+    color: #666;
+}
+
+.main .sign_slide ul li:nth-child(odd) {
+    background-color: #fcfcfc;
+}
+
+.main .sign_slide ul li:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+.main .sign_slide ul li div[class*="present"] {
+    height: 45px;
+}
+
+.main .sign_slide ul li div[class*="present"]::before {
+    float: left;
+    color: #bbb;
+    font-family: 'icomoon';
+    font-size: 25px;
+    line-height: 45px;
+    margin-right: 20px;
+    vertical-align: baseline;
+}
+
+.main .sign_slide ul li .present1::before {
+    content: '\e919';
+}
+
+.main .sign_slide ul li .present2::before {
+    content: '\e912';
+}
+
+.main .sign_slide ul li .present3::before {
+    content: '\e9b5';
+}
+
+.main .sign_slide ul li .present4::before {
+    content: '\e970';
+}
+
+.main .sign_slide ul li .present5::before {
+    content: '\e944';
+}
+
+.main .sign_slide ul li p {
+    font-size: 13px;
+    color: #999;
+}
+
+.main .sign {
+    float: left;
+    width: 450px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.sign ul {
+    position: relative;
+    width: 330px;
+    margin: 0px auto;
+}
+
+.sign ul li:nth-child(-n+3) {
+    position: relative;
+    width: 100%;
+    margin: 36px 0;
+    padding: 5px 10px;
+    padding-left: 0px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s;
+}
+
+.sign ul li:nth-child(-n+3) p {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #0aa7a7;
+    font-size: 13px;
+    transform: translateY(50%);
+}
+
+.sign ul li::before {
+    display: inline-block;
+    height: 35px;
+    width: 70px;
+    line-height: 35px;
+    font-size: 24px;
+    text-align: center;
+    color: rgb(133, 130, 130);
+    font-family: 'icomoon';
+    vertical-align: bottom;
+}
+
+.sign ul li:nth-child(1)::before {
+    content: '\e928';
+}
+
+.sign ul li:nth-child(2)::before {
+    content: '\e915';
+}
+
+.sign ul li:nth-child(2) .eyes {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    font-size: 17px;
+    font-family: 'icomoon';
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.sign ul li:nth-child(3)::before {
+    content: '\e925';
+}
+
+.sign .inp {
+    width: calc(100% - 70px);
+    height: 35px;
+}
+
+.sign ul li:nth-child(3) {
+    float: left;
+    width: 205px;
+    margin-top: 0px;
+}
+
+.sign li:nth-child(4) {
+    float: right;
+    width: 100px;
+    text-align: center;
+}
+
+.sign li:nth-child(4) a {
+    text-decoration: underline;
+    color: #0aa7a7;
+}
+
+.sign li:last-child p {
+    float: right;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.sign li:last-child p a {
+    color: #0aa7a7;
+}
+
+.sign li:last-child p a::after {
+    content: '\ea04';
+    font-family: 'icomoon';
+    margin-left: 5px;
+}
+
+.sign .btn {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #009999;
+    cursor: pointer;
+}
+
+.sign .btn:hover {
+    background-color: #0aa7a7;
+}

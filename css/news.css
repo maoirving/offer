@@ -1,0 +1,73 @@
+.shortcut .fl ul li:nth-child(5) {
+    border-bottom: 3px solid #0aa7a7;
+}
+
+.shortcut .fl ul li:nth-child(5) a {
+    color: #0aa7a7;
+}
+
+.main {
+    background-color: #fff;
+    margin: 0 auto 15px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main ul {
+    width: 1040px;
+    margin: 0 auto;
+}
+
+.main ul li {
+    height: 220px;
+    border-bottom: 1px solid #ededed;
+    padding: 30px;
+}
+
+.main ul li .img_wrap {
+    float: left;
+    width: 284px;
+    height: 157px;
+    overflow: hidden;
+}
+
+.main ul li .img_wrap img {
+    width: 284px;
+    transition: all 0.5s;
+}
+
+.main ul li .img_wrap img:hover {
+    transform: scale(1.08);
+}
+
+.main ul li .text {
+    float: left;
+    width: 600px;
+    margin-left: 50px;
+}
+
+.main ul li .text .news_title {
+    font-size: 20px;
+}
+
+.main ul li .text .news_brief {
+    height: 120px;
+    font-size: 14px;
+    color: #666;
+    padding: 20px 0 20px;
+}
+
+.main ul li .text .news_brief p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 弹性伸缩盒子模型显示 */
+    display: -webkit-box;
+    /* 限制在一个块元素显示的文本的行数 */
+    -webkit-line-clamp: 4;
+    /* 设置或检索伸缩盒对象的子元素的排列方式 */
+    -webkit-box-orient: vertical;
+}
+
+.main ul li .text .info {
+    font-size: 13px;
+    color: #999;
+}

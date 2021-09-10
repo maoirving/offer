@@ -1,0 +1,68 @@
+
+.right .content .manage_applied .operate {
+    display: flex;
+    align-items: center;
+    height: 55px;
+    background-color: #f2f2f2;
+}
+
+.right .content .manage_applied .operate .btn {
+    float: left;
+    margin-left: 10px;
+    padding: 0 20px;
+    height: 35px;
+}
+
+.right .content .manage_applied .operate .search {
+    width: 300px;
+    height: 35px;
+    border: 1px solid #009999;
+    background-color: #fff;
+    margin-left: 120px;
+}
+
+.right .content .manage_applied .operate .search input[type=search] {
+    width: 230px;
+    height: 33px;
+    padding: 0 8px;
+}
+
+.right .content .manage_applied .operate .search .search_btn {
+    height: 33px;
+    color: #fff;
+    padding: 0 20px;
+    background-color: #009999;
+    float: right;
+}
+
+.right .content .manage_applied .operate .search .search_btn:hover {
+    background-color: #0aa7a7;
+}
+
+.right .content .manage_applied .operate .choose label {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 70px;
+}
+
+.right .content .manage_applied .operate .choose .select_wrap {
+    width: 95px;
+    background-color: #fff;
+}
+
+.right .content .manage_applied .operate .choose .select_wrap .select_inner {
+    height: 30px;
+    line-height: 30px;
+}
+
+.right .content .manage_applied .operate .many_btn {
+    margin-left: auto;
+}
+
+.right .content .manage_applied .operate .btn_right {
+    margin-left: auto;
+    margin-right: 10px;
+}
